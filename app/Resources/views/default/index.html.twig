@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        input {
+            margin: 10px 0px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <div class="well">
+            <div style="width: 500px; margin:auto;">
+
+                {{ form_start(form, {'attr': {'class': 'form-group'}, action:path('shorten')}) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+
+                {% if app.request.query.get("shortenedUrl") %}
+                    Shortened URL : <a href="{{ path('expand',
+                        { 'url': app.request.query.get("shortenedUrl")}) }}"
+                       target="_blank">
+                        {{ app.request.query.get("shortenedUrl") }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

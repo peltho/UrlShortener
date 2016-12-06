@@ -1,0 +1,21 @@
+AppBundle\Entity\ShortUrl:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ShortUrlRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        realUrl:
+            type: string
+            length: 255
+            column: real_url
+        shortUrl:
+            type: string
+            length: 255
+            column: short_url
+            nullable: true
+    lifecycleCallbacks: {  }
