@@ -2,7 +2,7 @@ Url Shortener
 =====
 
 Installation
-=====
+-----
 
 1. Download the archive or clone the repository
 2. Install composer if you haven't done it before
