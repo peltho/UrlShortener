@@ -1,0 +1,2 @@
+e35556,127.0.0.1,POST,http://localhost:8000/shorten,1482579212,,302
+e366e1,127.0.0.1,GET,http://localhost:8000/?shortenedUrl=http%3A%2F%2Flocalhost%3A8000%2Fj&url=https%3A%2F%2Fgithub.com%2F,1482579212,,200

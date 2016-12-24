@@ -43,15 +43,15 @@ class DefaultController extends Controller
             $url = $form->getData()->getRealUrl();
 
             $em = $this->getDoctrine()->getManager();
-            $repository = $em->getRepository('AppBundle:ShortUrl');
+
+            $urlService = $this->get('urlshortener');
 
             // Do some basic checks
-            if ($repository->validateUrlFormat($url) == false) {
+            if($urlService->validateUrlFormat($url) == false) {
                 throw new Exception(
                     "URL does not have a valid format.");
             }
-
-            if (!$repository->verifyUrlExists($url)) {
+            if(!$urlService->verifyUrlExists($url)) {
                 throw new Exception(
                     "URL does not appear to exist.");
             }
@@ -61,7 +61,7 @@ class DefaultController extends Controller
             $em->flush();
 
             // Then, create a short code based on its ID
-            $code = $repository->createShortCode($typedUrl->getId());
+            $code = $urlService->createShortCode($typedUrl->getId());
 
             $actualUrl = "http://$_SERVER[HTTP_HOST]/";
             // Choose the prefix you want (it could be smth like http://natae.co.uk/...)
